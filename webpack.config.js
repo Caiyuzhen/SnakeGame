@@ -15,7 +15,7 @@ module.exports = {
   entry: './src/index.ts',//指定入口文件(主文件)
   output: {//指定打包文件（打包后放在哪里）
     path: path.resolve(__dirname, 'dist'), //打包后的目录(__dirname 表示会自动拼接目录的路径名称)
-    filename: 'bundle.js',// 打包后的文件名称
+    filename: 'bundle.js',// 打包后的文件名称(用来兼容旧的浏览器的文件)
     environment:{//配置打包环境（用来兼容 ie）
       arrowFunction: false //🔥不使用箭头函数
     }
@@ -56,6 +56,19 @@ module.exports = {
         use: [ //⚠️⚠️，loader 的执行顺序是由下往上
           "style-loader",
           "css-loader",
+          {
+            loader: "postcss-loader",
+            options:{
+              postcssOptions:{
+                plugins:[[
+                  "postcss-preset-env",
+                  {
+                    browers:"last 2 versions"//兼容两个版本的浏览器
+                  }//设置浏览器的兼容性
+                ]]
+              }
+            }
+          },
           "less-loader"
         ]
       }

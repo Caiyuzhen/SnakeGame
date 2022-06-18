@@ -1,0 +1,101 @@
+//🔥🔥🔥设置颜色变量（记得写;）
+@bg-color: rgb(237, 234, 243);
+@gameBg-color: rgb(207, 205, 211);
+@border-color:rgb(30, 30, 30);
+@snack-color:rgb(45, 24, 141);
+@food-color:rgb(141, 24, 116);
+
+
+//🌟清除默认样式
+*{
+  margin: 0;
+  padding: 0;
+  //🔥🔥改变和模型的计算方式(这样再去设置盒子的 width 跟 height 时就是总大小，就不会出现模型的计算问题)
+  box-sizing: border-box;
+}
+
+
+body{
+  background-color: #cbc9ff;
+  font: bold 20px "Courier";
+}
+
+.mainTitle{
+  text-align: center;//居中
+  margin-top: 2rem;
+}
+
+//主容器
+#main{
+  width: 22.5rem;
+  height: 32.5rem;
+  background-color: @bg-color;
+  border: 8px solid @border-color;
+  border-radius: 2.5rem;
+  margin:auto;//auto，左右居中
+  margin-bottom:8rem;
+  margin-top:2rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content:space-around;
+  padding-top:.95rem;
+}
+
+//游戏区域
+#stage{
+  width: 304px;
+  height: 420px;
+  background-color: @gameBg-color;
+  border:.5rem solid @border-color;
+  border-radius: 1rem;
+  //🌟绝对定位，蛇才能移动，舞台也要开启相对定位
+  position: relative;
+
+  //蛇的样式
+  #snake{
+    &>div{//所有子元素
+      width: .65rem;
+      height: .65rem;
+      background-color: @snack-color;
+      border: 1px solid @gameBg-color;
+      border-radius: 3px;
+      //🌟绝对定位，蛇才能移动，舞台也要开启相对定位
+      position: absolute;
+    }
+  } 
+
+  //食物的样式
+  &>#food{
+    //花瓣效果
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 40px;
+    top: 100px;
+    display: flex;
+    //具体的花瓣布局
+    flex-flow: row wrap;//横向排列，不够会换行
+    justify-content: center;
+    align-items: space-between;//平均分配空间
+    transform: rotate(45deg);//旋转 45 度
+    //具体的花瓣
+    &>div{
+      width: 8px;
+      height: 8px;
+      background-color: @food-color;
+      border: 1px solid @gameBg-color;
+      border-radius: 2px;
+
+    }
+  }
+}
+
+#score-Panel{
+  width: 18.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
+}
+
