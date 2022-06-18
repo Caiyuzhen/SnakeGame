@@ -1,0 +1,19 @@
+{
+  // "include": [//(类似文件夹)
+  //   "./src/**/*" //**表示指定 src 下【任意目录】下的【任意文件】都会被 tsc 自动编译
+  //    ],//include 用来指定哪些 ts 文件需要被编译, /** 为任意目录， /* 为任意文件
+  
+  "compilerOptions": {
+    //🔥最重要，决定以编译器如何编译
+    "target": "ES6",              /*🔥设置将要编译成的 JavaScript 版本 */
+    "module": "ES6",              /*🔥tsc使用哪种模块化的规范 */  
+    "strict": true,               /*🔥严格检查的总开关，这个一开下面三个自动都打开 */
+    // "noImplicitAny": true,     /*不允许隐式的 Any 类型（ts 自动帮你转为 Any）*/
+    // "noImplicitThis": true,    /*不允许不明类型的定义，比如 this*/
+    // "strictNullChecks": true,  /*比如可以确保 getEle 的结果不是 Null */
+
+    // "outDir": "./dist",    /* 🔥指定编译完的输出目录（比如一个文件夹放 ts 源码，另一个文件夹放编译后的 js */                                 
+    "removeComments": true,     /*编译后移除注释*/               
+    "noEmitOnError": true      /*🔥如果 ts 报错则暂停编译*/
+  }
+}
