@@ -84,7 +84,7 @@ module.exports = {
     new CleanWebpackPlugin(), //每次编译前会先自动清除 dist 目录下的所有文件,
   ],
   
-  resolve:{//🔥🔥设置要解析的 ts 模块，否则 export 的 ts 没法被 import  
+  resolve:{//🔥🔥设置要解析的 ts 模块，否则 export 的 ts 没法被 import,会自动帮你加后缀
     extensions:['.ts', '.js', '.jsx'], //⚡️⚡️哪些文件能被 export 【很关键！】
   }
 }

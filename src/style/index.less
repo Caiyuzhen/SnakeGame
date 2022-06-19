@@ -68,8 +68,8 @@ body{
   //食物的样式
   &>#food{
     //花瓣效果
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     position: absolute;
     left: 40px;
     top: 100px;
@@ -78,11 +78,12 @@ body{
     flex-flow: row wrap;//横向排列，不够会换行
     justify-content: center;
     align-items: space-between;//平均分配空间
-    transform: rotate(45deg);//旋转 45 度
+    // transform: rotate(45deg);//旋转 45 度
+    
     //具体的花瓣
     &>div{
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background-color: @food-color;
       border: 1px solid @gameBg-color;
       border-radius: 2px;
