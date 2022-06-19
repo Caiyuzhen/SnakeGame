@@ -66,7 +66,7 @@ class GameControl {
     let headX = this.snake.headX
     let headY = this.snake.headY
 
-    //🔥🔥🔥计算值：判断 this.direction 的 4 种 X 2 情况来计算改变的值(因为要包含 window 机，window 机是 Up / Down...)
+    //🔥🔥🔥计算值(⚡️蛇向哪边走，然后通过循环的方法来一直走）：判断 this.direction 的 4 种 X 2 情况来计算改变的值(因为要包含 window 机，window 机是 Up / Down...)
     switch( this.direction ){
       case "ArrowUp": 
       case "Up": 
@@ -74,16 +74,15 @@ class GameControl {
         break;
       case "ArrowDown":
       case "Down":
-        headY += 10;//向下就是 Y 增加, 每次移动一格为 10
+        headY += 10;  //向下就是 Y 增加, 每次移动一格为 10
         break;
       case "ArrowLeft":
       case "Left":
-        headX -= 10;//向左就是 X 减小, 每次移动一格为 10
+        headX -= 10;  //向左就是 X 减小, 每次移动一格为 10
         break;
       case "ArrowRight":
       case "Right":
-        headX += 10;
-        //向右就是 X 增加, 每次移动一格为 10
+        headX += 10;  //向右就是 X 增加, 每次移动一格为 10
         break;
     }
 
@@ -95,8 +94,8 @@ class GameControl {
     //🌟判断如果撞墙了则游戏结束，try、catch 配合组件 throw new Error 的方式很常用！！🚀🚀
     try{
         //🔥🔥🔥根据上面计算的值来修改蛇的坐标
-        this.snake.headX = headX
-        this.snake.headY = headY
+        this.snake.headX = headX //修改蛇头的 X 坐标
+        this.snake.headY = headY //修改蛇头的 Y 坐标
     }catch (e:any){
         alert(e.message);//捕获异常后就说明游戏结束，弹出提示信息
         this.isLive = false//将 isLive 设置为 false，让蛇不动
@@ -106,14 +105,14 @@ class GameControl {
     //🌟🌟🌟让蛇移动的方法二：在函数内每隔 X 秒，自己调自己
     this.isLive && setTimeout( //🔥🔥🔥this.isLive && XXX 表示当条件为 true 才开启，否则就不开启！
       this.moveSnake.bind(this)
-    ,300 - (this.scorePanel.level - 1 )*30 )//记得绑定回调函数的 this 指向, 然后随着等级的提升，速度变快,于是用时间差 300 来 - (this.scorePanel.level - 1 )*30
+    ,200 - (this.scorePanel.level - 1 )*20 )//记得绑定回调函数的 this 指向, 然后随着等级的提升，速度变快,于是用时间差 300 来 - (this.scorePanel.level - 1 )*30
   }
 
 
   //判断蛇是否吃到了食物 (🔥🔥思路：检查蛇的新坐标是否和食物重叠了🍜🍜)
   checkEatFood(headX:number, headY:number){ 
     if(headX === this.food.x && headY === this.food.y){ //判断是否吃到了食物，🌟步骤一：返回一个布尔值（都一样才会返回布尔值 true）
-      console.log('吃到食物了	');
+      console.log('吃到食物了');
       //食物的位置需要重置
       this.food.change()
       //增加分数

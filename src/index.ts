@@ -16,6 +16,13 @@ import GameControl from './moduls/GameControl'
   //让吃到食物能够生长\分数增加
   //让蛇的子节点能够移动
 
+//面向对象的写法
+  // 定义类：
+    // 定义类的基础属性
+    // 初始化属性 + 一些方法
+    // 定义方法
+    // 根据时机去执行方法
+
 
 const GC = new GameControl()//因为 GameControl 控制着所有模块，所以一 new 它的话，相当于就开始游戏了
 
