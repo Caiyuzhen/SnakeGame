@@ -17,7 +17,7 @@ class ScorePanel {
   }
 
 
-  // 修改分数
+  //增加分数
   addScore():void{ //一调用这个方法，就会增加分数
     this.score++
     this.scoreEle.innerHTML = this.score + ''//'' 拼接为字符串
@@ -32,7 +32,7 @@ class ScorePanel {
 
   //提升等级(需要有上限,因为蛇的速度会变快)
   levelUp():void{
-    if(this.level <= this.maxLevel){
+    if(this.level < this.maxLevel){
       this.levelEle.innerHTML = ++this.level + ''//另一种写法，直接 ++
     }
   } 

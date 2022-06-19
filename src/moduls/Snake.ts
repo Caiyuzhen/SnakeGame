@@ -8,7 +8,8 @@ class Snake {
   snackElement:HTMLElement//获取整个蛇的容器
 
   constructor() {
-    this.snackElement = document.getElementById("#snack")!              //获取蛇的容器
+    //注意,querySelector 获取 id 需要加 #，getElementById 不需要
+    this.snackElement = document.getElementById("snake")!              //获取蛇的容器
     this.head = document.querySelector('#snake > div') as HTMLElement;          //获取蛇头(因为 querySelector 是只取第一个) ｜ as HTMLElement 为类型断言， 因为 head: HTMLElement 是一类元素
     this.bodies = document.getElementById('snake')!.getElementsByTagName('div')  //获取剩下的蛇身，因为用 querySelector 是一次性的获取，每次添加完元素后都要重新获取，所以用 getElementById('snake')!.getElementsByTagName('div')
   }
@@ -18,17 +19,34 @@ class Snake {
   get headX(): number {
     return this.head.offsetLeft
   }
+
   get headY(): number {
     return this.head.offsetTop
   }
 
 
-  //🔥🔥设置蛇头坐标
+  //🔥🔥修改蛇头坐标
+  //X 轴位置
   set headX(value: number) {
-    this.head.style.left = value + 'px'
+    if(this.headX === value){//判断蛇的 X 轴位置是否没有发生变化
+      return
+    }
+    //🔥判断蛇的 X 轴是否达到边界(撞墙了)
+    if(value < 0 || value > 270){
+      throw new Error('撞墙了')       //⚡️⚡️抛出错误，让 GameControl 知道蛇撞墙了
+    }
+    this.head.style.left = value + 'px'  //⚡️⚡️不撞墙的话，就改变蛇的位置
   }
+
+  //Y 轴位置
   set headY(value: number) {
-    this.head.style.top = value + 'px'
+    if(this.headY === value){//判断蛇的 Y 轴位置是否没有发生变化
+      return
+    }
+    if(value < 0 || value > 380){
+      throw new Error('撞墙了')       //⚡️⚡️抛出错误，让 GameControl 知道蛇撞墙了
+    }
+    this.head.style.top = value + 'px'  //⚡️⚡️不撞墙的话，就改变蛇的位置
   }
 
 

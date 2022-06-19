@@ -1,9 +1,11 @@
 //🔥🔥🔥设置颜色变量（记得写;）
 @bg-color: rgb(237, 234, 243);
-@gameBg-color: rgb(207, 205, 211);
+@gameBg-color: rgb(206, 204, 216);
 @border-color:rgb(30, 30, 30);
 @snack-color:rgb(45, 24, 141);
 @food-color:rgb(141, 24, 116);
+@buttonCircle-color:rgb(164, 161, 175);
+@buttonSquare-color:rgb(200, 198, 209);
 
 
 //🌟清除默认样式
@@ -18,6 +20,8 @@
 body{
   background-color: #cbc9ff;
   font: bold 20px "Courier";
+  overflow-x:hidden; //禁用滚动条
+  overflow-y:hidden;//禁用滚动条
 }
 
 .mainTitle{
@@ -45,9 +49,9 @@ body{
 //游戏区域
 #stage{
   width: 304px;
-  height: 420px;
+  height: 414px;
   background-color: @gameBg-color;
-  border:.5rem solid @border-color;
+  border:12px solid @border-color;
   border-radius: 1rem;
   //🌟绝对定位，蛇才能移动，舞台也要开启相对定位
   position: relative;
@@ -87,7 +91,6 @@ body{
       background-color: @food-color;
       border: 1px solid @gameBg-color;
       border-radius: 2px;
-
     }
   }
 }
@@ -96,7 +99,27 @@ body{
   width: 18.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 0.75rem;
   padding-bottom: 1rem;
+
+
+  &>#circle{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: @buttonCircle-color;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &>#square{
+      width: 0.75rem;
+      height: 0.75rem;
+      background-color: @buttonSquare-color;
+      border-radius: 0.1rem;
+
+    }
+  }
 }
 
